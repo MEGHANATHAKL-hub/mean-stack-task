@@ -1,0 +1,39 @@
+<div class="main-box">
+  <div class="app-all-datasets">
+    <div class="header">
+      <button routerLink="/new-video" class="new-btn"> + New Video</button>
+    </div>
+
+    <section style="overflow: auto">
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Video Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="url">
+          <th mat-header-cell *matHeaderCellDef>Url</th>
+          <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon (click)="selectedWeek(element.name)" class="action">smart_display</mat-icon> &nbsp;
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: stickyHeader"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </section>
+  </div>
+</div>

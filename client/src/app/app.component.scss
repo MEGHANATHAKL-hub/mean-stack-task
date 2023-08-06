@@ -1,0 +1,39 @@
+::ng-deep .mat-step-header .mat-step-icon-state-done {
+  background-color: #008002;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: #008002;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+  background-color: #008002;
+  color: #fff;
+}
+
+
+
+.sub-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+  position: fixed;
+  top: 65px;
+  left: 83px;
+  z-index: 99999;
+
+  .btn {
+    background-color: white;
+    border: 0.1px solid #80808094;
+    height: 37px;
+    width: 135px;
+    cursor: pointer;
+    border-radius: 17% / 60%;
+  }
+
+  .active {
+    background-color: rgb(33, 142, 243);
+    color: white;
+  }
+}
