@@ -1,7 +1,6 @@
 import { Component, Inject, Optional, ViewChild, ElementRef } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AppService } from 'src/app/shared/services/app.service';
-import { SocketService } from 'src/app/shared/services/socket.service';
 import { io } from 'socket.io-client';
 
 @Component({
@@ -22,9 +21,7 @@ export class VideoStreamComponent  {
   progress: number | undefined;
 
   constructor( @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
-   private socketService: SocketService, 
    private appService:AppService) {
-    //this.fileName = `api/data/video/stream/${data.fileName}`
     this.fileName = `api/data/video/socket/stream/${data.fileName}`
     this.socket = io(window.origin);
  }

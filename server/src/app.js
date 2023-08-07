@@ -15,40 +15,6 @@ const io = require('socket.io')(http);
 const fs = require("fs");
 const PORT = process.env.PORT || "3000";
 
-// io.on('connection', (socket) => {
-//   console.log('A user connected');
-
-//   // Endpoint to stream video using socket.io-stream
-//   socket.on('stream-video', (fileName) => {
-//     const videoPath = path.join(__dirname, `./uploads/${fileName}`);
-//     console.log(videoPath)
-//     //const videoPath = path.join(__dirname, 'videos', videoName);
-
-//     fs.stat(videoPath, (err, stats) => {
-//       if (err) {
-//         console.error(err);
-//         return;
-//       }
-
-//        const readStream = fs.createReadStream(videoPath);
-//        socket.emit('stream-video', readStream); // Emit the video stream using 'socket.io-stream'
-
-//       // const fileStream = fs.createReadStream(videoPath);
-//       // fileStream.on('data', (data) => {
-//       //   socket.emit('stream-video', data);
-//       // });
-//       // fileStream.on('end', () => {
-//       //   socket.emit('video-stream-end'); // Notify the client that the video stream has ended
-//       // });
-
-//     });
-//   });
-
-//   socket.on('disconnect', () => {
-//     console.log('A user disconnected');
-//   });
-// });
-
 // Socket.IO connection handling
 io.on('connection', (socket) => {
   console.log('Client connected');
@@ -65,11 +31,6 @@ io.on('connection', (socket) => {
   });
 });
 
-// var server = require('http').Server(app);
-// var io = require('socket.io')(server);
-
-//app.use("/api", apiRouter);
-
 app.get("/", function (req, res, next) {
   let indexFile = path.join(__dirname, "../../static/index.html");
   res.sendFile(indexFile);
@@ -77,21 +38,6 @@ app.get("/", function (req, res, next) {
 
 app.use("/api", apiRouter);
 
-
-// io.on('connection', (socket) => {
-//   console.log("New connection");
-
-//   socket.on('event1', (data)=> {
-//     console.log(data.msg);
-//   })
-
-//   socket.emit('event2', { msg: 'server to client, do you read me'})
-
-//   socket.on('event3', (data)=> {
-//     console.log(data.msg);
-//     socket.emit('event4', {msg: 'loud and clear'})
-//   })
-// })
 
 app.use(function (req, res, next) {
   next(createError(404));

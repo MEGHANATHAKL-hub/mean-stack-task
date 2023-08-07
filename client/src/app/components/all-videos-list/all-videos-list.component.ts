@@ -1,9 +1,10 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/shared/services/app.service';
 import { VideoStreamComponent } from '../video-stream/video-stream.component';
+import { VideoStreamHttpComponent } from '../video-stream-http/video-stream-http.component';
 
 @Component({
   selector: 'app-all-videos-list',
@@ -13,11 +14,8 @@ import { VideoStreamComponent } from '../video-stream/video-stream.component';
 
 export class AllVideosListComponent {
   stickyHeader: boolean = true;
-  displayedColumns: string[] = ['position', 'name', 'url', 'action'];
+  displayedColumns: string[] = ['position', 'name', 'http', 'socket'];
   dataSource: any;
-  data = [
-    {'video_name': "Video 1", 'video_description':'Jokes Video', 'created_at': "2023/03/12", 'created_by': "Meghanatha K L"}
-  ];
 
   constructor(private appService: AppService, private router: Router, public dialog: MatDialog) {
 
@@ -25,11 +23,10 @@ export class AllVideosListComponent {
 
   ngOnInit() {
     this.appService.getFiles()
-    .subscribe((response:any)=>{
-      console.log('response receved is ', response);
-      this.dataSource = new MatTableDataSource(response);
-    })
-    //this.dataSource = this.data
+      .subscribe((response: any) => {
+        console.log('response receved is ', response);
+        this.dataSource = new MatTableDataSource(response);
+      })
   }
 
 
@@ -39,13 +36,22 @@ export class AllVideosListComponent {
       })
   }
 
-  selectedWeek(fileName:string) {
+  selectedVideoUsingSocket(fileName: string) {
     const selectedFileDailog = this.dialog.open(VideoStreamComponent, {
-      data: { fileName: fileName}
+      data: { fileName: fileName }
     });
 
     selectedFileDailog.afterClosed().subscribe(result => {
     });
-}
+  }
+
+  selectedVideoUsingHttp(fileName: string) {
+    const selectedFileDailog = this.dialog.open(VideoStreamHttpComponent, {
+      data: { fileName: fileName }
+    });
+
+    selectedFileDailog.afterClosed().subscribe(result => {
+    });
+  }
 
 }

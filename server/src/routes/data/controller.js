@@ -1,28 +1,6 @@
 const uploadFile = require("../../middleware/upload");
 var path = require("path");
 const fs = require("fs");
-var ss = require('socket.io-stream');
-const socket = require("../../service/socket");
-
-async function getVideoViaSocket(req, res, next) {
-  try {
-    const { fileName } = req.params;
-    if (!fileName) {
-      res.status(500).send("Request Failed no data available");
-    }
-
-    const videoPath = path.join(__dirname, `../../uploads/${fileName}`);
-
-    //Emit socket event to the web clients
-    //socket.client.of("/video").emit("video-play", stream.pipe(res));
- 
-    const readStream = fs.createReadStream(videoPath);
-    ss(socket.client.of("/video")).emit('video-stream', readStream);
-  } catch (err) {
-    console.log(err);
-    next(err);
-  }
-}
 
 async function upload (req, res) {
   try {
@@ -37,9 +15,7 @@ async function upload (req, res) {
     });
   } catch (err) {
     console.log(err)
-    res.status(500).send({
-      message: `Could not upload the file: ${req.file}. ${err}`,
-    });
+    res.status(500).send(`Could not upload the file, ${err}`);
   }
 };
 
@@ -97,23 +73,8 @@ async function getVideo (req, res) {
   }
 };
 
-async function  download(req, res) {
-  const fileName = req.params.name;
-  const directoryPath = __basedir + "/resources/static/assets/uploads/";
-
-  res.download(directoryPath + fileName, fileName, (err) => {
-    if (err) {
-      res.status(500).send({
-        message: "Could not download the file. " + err,
-      });
-    }
-  });
-};
-
 module.exports = {
   upload,
   getListFiles,
-  download,
-  getVideo,
-  getVideoViaSocket
+  getVideo
 };

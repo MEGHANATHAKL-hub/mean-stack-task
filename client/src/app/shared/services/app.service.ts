@@ -14,7 +14,10 @@ export class AppService {
   }
 
   uploadFile(data:object) {
-    return this.http.post("api/data/video/upload", data)
+    return this.http.post("api/data/video/upload", data, {
+      reportProgress: true,
+      observe: 'events'
+    })
   }
 
   getFile(id:string) {

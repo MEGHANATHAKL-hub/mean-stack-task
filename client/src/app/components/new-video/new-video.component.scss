@@ -1,19 +1,96 @@
-.header{
-    text-align: center;
-}
-.header h1{
-    font-family: serif;
-    font-size: 38px;
-    font-family: 'Times New Roman';
-}
-.content{
-    margin: 100px;
-}
-.margin25{
-    margin: 25px;
-}
-.upload{
-    cursor: pointer;
-}
+// .header{
+//     text-align: center;
+// }
+// .header h1{
+//     font-family: serif;
+//     font-size: 38px;
+//     font-family: 'Times New Roman';
+// }
+// .content{
+//     margin: 100px;
+// }
+// .margin25{
+//     margin: 25px;
+// }
+// .upload{
+//     cursor: pointer;
+// }
 
 
+// /* file-upload.component.css */
+
+// /* Center the form */
+// // form {
+// //     display: flex;
+// //     flex-direction: column;
+// //     align-items: center;
+// //     margin-top: 20px;
+// //   }
+  
+//   /* Style the label */
+//   label {
+//     font-weight: bold;
+//     margin-bottom: 20px;
+//     font-size: 20px;
+//   }
+  
+//   /* Style the input file element */
+//   input[type="file"] {
+//     margin-bottom: 10px;
+//     width: 300px;
+//     height: 50px;
+//     border: 1px solid #80808057;
+//     padding-top: 20px;
+//     padding-left: 20px;
+//     background-color: white;
+//     cursor: pointer;
+//   }
+  
+//   /* Style error messages */
+//   .error-message {
+//     color: red;
+//     font-size: 14px;
+//     margin-top: 5px;
+//   }
+  
+//   /* Disable the button when form is invalid */
+//   button[disabled] {
+//     background-color: #ccc;
+//     cursor: not-allowed;
+//   }
+
+  .submit {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .main-box {
+    margin: auto;
+    padding: 47px;
+    padding-top: 80px;
+
+  }
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+    font-size: 25px;
+  }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .file-uploader {
+    padding: 20px;
+  }
